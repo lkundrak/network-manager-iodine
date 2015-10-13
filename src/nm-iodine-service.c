@@ -389,9 +389,9 @@ iodine_watch_cb (GPid pid, gint status, gpointer user_data)
 		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), priv->failure);
 	} else if (error) {
 		nm_vpn_service_plugin_failure (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_PLUGIN_FAILURE_CONNECT_FAILED);
+	} else {
+		nm_vpn_service_plugin_disconnect (NM_VPN_SERVICE_PLUGIN (plugin), NULL);
 	}
-
-	nm_vpn_service_plugin_set_state (NM_VPN_SERVICE_PLUGIN (plugin), NM_VPN_SERVICE_STATE_STOPPED);
 }
 
 static gboolean
